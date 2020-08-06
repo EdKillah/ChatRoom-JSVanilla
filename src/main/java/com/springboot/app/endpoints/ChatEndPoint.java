@@ -42,6 +42,12 @@ public class ChatEndPoint {
 
 	private Usuario usuario;
 
+	/*
+	 * Cosas por mejorar = Crear inyecciones porque esta muy cargada la clase, y debería solo enviar mensajes
+	 * Que la(s) otra(s) se encarguen de validar, adicionar, eliminar, formatear, etc...
+	 */
+	
+	
 	public void send(String message) {
 
 		try {

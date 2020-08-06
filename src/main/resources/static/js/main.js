@@ -56,6 +56,8 @@ let comunnicationWS = new WSChatChanel (ChatServiceURL(),
 				userMessage(mensaje);	
 			}else if(mensaje.userList){
 				showUserList(mensaje.userList);
+			} else{
+				botMessage(mensaje);	
 			}
 			
 			
@@ -64,6 +66,17 @@ let comunnicationWS = new WSChatChanel (ChatServiceURL(),
 
 function showUserList(userList){	
 	users.innerHTML = `${userList.map(usr => `<li>${usr}</li>`).join('')}`;
+}
+
+function botMessage(mensaje){
+	const div = document.createElement('div');
+	div.classList.add('message');
+	div.innerHTML = `<p class="meta">${mensaje.tipo} <span> ${mensaje.time}</span></p>
+		
+		<p class="text">${mensaje.username}  ${mensaje.message}</p>
+	`;
+	chatMessages.appendChild(div);
+	chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 function userMessage(mensaje){
@@ -75,6 +88,7 @@ function userMessage(mensaje){
 		<p class="text">${mensaje.message}</p>
 	`;
 	chatMessages.appendChild(div);
+	chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 
